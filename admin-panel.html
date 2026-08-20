@@ -96,7 +96,7 @@
         .admin-container {
             display: none;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 2rem 1rem;
         }
 
         .admin-container.active {
@@ -112,6 +112,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logout-btn {
@@ -126,9 +127,10 @@
 
         .tab-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 0.8rem;
             margin-bottom: 2rem;
+            margin-top: 1rem;
         }
 
         .tab-btn {
@@ -137,7 +139,7 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
         }
 
@@ -161,7 +163,7 @@
 
         .edit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
         }
 
@@ -197,7 +199,7 @@
             margin-top: 2rem;
         }
 
-        .save-btn, .reset-btn, .add-btn {
+        .save-btn, .reset-btn, .add-btn, .today-btn {
             padding: 0.9rem;
             border: none;
             border-radius: 6px;
@@ -221,6 +223,11 @@
             margin-top: 1rem;
         }
 
+        .today-btn {
+            background: #3498db;
+            color: white;
+        }
+
         .table-section {
             overflow-x: auto;
             margin-top: 2rem;
@@ -229,7 +236,7 @@
         .table-section table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .table-section th {
@@ -274,12 +281,31 @@
             display: none;
         }
 
+        .edit-btn {
+            padding: 0.4rem 0.8rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
         @media (max-width: 768px) {
             .edit-grid {
                 grid-template-columns: 1fr;
             }
             .tab-buttons {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .admin-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .admin-header h1 {
+                width: 100%;
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -355,7 +381,10 @@
                 <div class="edit-grid">
                     <div class="edit-field">
                         <label>📅 Date</label>
-                        <input type="text" id="resultDate" placeholder="11 March 2026">
+                        <input type="date" id="resultDate">
+                    </div>
+                    <div class="edit-field" style="padding-top: 2rem;">
+                        <button class="today-btn" onclick="setTodayDate()">📆 Set Today's Date</button>
                     </div>
                 </div>
                 <div class="table-section">
@@ -384,6 +413,7 @@
                             <tr>
                                 <th>Game Name</th>
                                 <th>Time</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="gamesTable"></tbody>
@@ -542,6 +572,20 @@
             setTimeout(() => el.style.display = 'none', 3000);
         }
 
+        function setTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            document.getElementById('resultDate').value = `${year}-${month}-${day}`;
+        }
+
+        function formatDateForDisplay(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
         // Branding
         function loadBranding() {
             const data = JSON.parse(localStorage.getItem('luckySattaBranding') || '{}');
@@ -560,10 +604,10 @@
             showSuccess('✅ Logo saved!');
         }
 
-        // Results - FIXED
+        // Results
         function loadResults() {
             const data = JSON.parse(localStorage.getItem('luckySattaResults') || '{}');
-            document.getElementById('resultDate').value = data.date || '11 March 2026';
+            document.getElementById('resultDate').value = data.date || '';
             
             const tbody = document.getElementById('resultsTable');
             tbody.innerHTML = GAMES.map(g => `
@@ -575,7 +619,8 @@
         }
 
         function saveResults() {
-            const data = { date: document.getElementById('resultDate').value };
+            const dateInput = document.getElementById('resultDate').value;
+            const data = { date: dateInput };
             document.querySelectorAll('#resultsTable input').forEach(input => {
                 data[input.dataset.key] = input.value;
             });
@@ -587,10 +632,11 @@
         function loadGameTimes() {
             const data = JSON.parse(localStorage.getItem('luckySattaGameTimes') || JSON.stringify(GAMES));
             const tbody = document.getElementById('gamesTable');
-            tbody.innerHTML = data.map(g => `
+            tbody.innerHTML = data.map((g, index) => `
                 <tr>
-                    <td><input type="text" class="inline-edit" data-name="${g.name}" value="${g.name}"></td>
-                    <td><input type="text" class="inline-edit" data-time="${g.name}" value="${g.time}"></td>
+                    <td><input type="text" class="inline-edit" data-index="${index}" data-field="name" value="${g.name}"></td>
+                    <td><input type="text" class="inline-edit" data-index="${index}" data-field="time" value="${g.time}"></td>
+                    <td><button class="edit-btn" onclick="alert('✏️ Edit directly in the fields above')">Edit</button></td>
                 </tr>
             `).join('');
         }
@@ -608,7 +654,7 @@
             showSuccess('✅ Games saved!');
         }
 
-        // Chart Data - FIXED
+        // Chart Data
         function loadChartData() {
             const data = JSON.parse(localStorage.getItem('luckySattaChartData') || '{}');
             document.getElementById('chartDate').value = data.date || 'March 2026';
