@@ -560,7 +560,7 @@
             showSuccess('✅ Logo saved!');
         }
 
-        // Results
+        // Results - FIXED
         function loadResults() {
             const data = JSON.parse(localStorage.getItem('luckySattaResults') || '{}');
             document.getElementById('resultDate').value = data.date || '11 March 2026';
@@ -569,7 +569,7 @@
             tbody.innerHTML = GAMES.map(g => `
                 <tr>
                     <td>${g.name}</td>
-                    <td><input type="text" class="inline-edit" data-game="${g.name}" value="${data[g.name.toLowerCase().replace(/\s+/g, '')] || '--'}"></td>
+                    <td><input type="text" class="inline-edit" data-key="${g.name}" value="${data[g.name] || '--'}"></td>
                 </tr>
             `).join('');
         }
@@ -577,7 +577,7 @@
         function saveResults() {
             const data = { date: document.getElementById('resultDate').value };
             document.querySelectorAll('#resultsTable input').forEach(input => {
-                data[input.dataset.game.toLowerCase().replace(/\s+/g, '')] = input.value;
+                data[input.dataset.key] = input.value;
             });
             localStorage.setItem('luckySattaResults', JSON.stringify(data));
             showSuccess('✅ Results saved!');
@@ -608,7 +608,7 @@
             showSuccess('✅ Games saved!');
         }
 
-        // Chart Data
+        // Chart Data - FIXED
         function loadChartData() {
             const data = JSON.parse(localStorage.getItem('luckySattaChartData') || '{}');
             document.getElementById('chartDate').value = data.date || 'March 2026';
@@ -622,7 +622,7 @@
                 for (let day = 1; day <= 31; day++) {
                     const key = `${game.name}_${day}`;
                     const value = data[key] || '';
-                    html += `<td><input type="text" class="inline-edit" data-game="${game.name}" data-day="${day}" value="${value}" maxlength="3" style="text-align: center;"></td>`;
+                    html += `<td><input type="text" class="inline-edit" data-key="${key}" value="${value}" maxlength="3" style="text-align: center;"></td>`;
                 }
                 html += `</tr>`;
             });
@@ -634,8 +634,7 @@
         function saveChartData() {
             const data = { date: document.getElementById('chartDate').value };
             document.querySelectorAll('#chartEditTable .inline-edit').forEach(input => {
-                const key = `${input.dataset.game}_${input.dataset.day}`;
-                data[key] = input.value;
+                data[input.dataset.key] = input.value;
             });
             localStorage.setItem('luckySattaChartData', JSON.stringify(data));
             showSuccess('✅ Chart saved!');
