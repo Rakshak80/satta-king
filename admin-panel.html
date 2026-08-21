@@ -34,36 +34,37 @@
 
         .login-box {
             background: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
         }
 
         .login-box h1 {
             color: var(--primary);
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .form-group input {
             width: 100%;
-            padding: 0.9rem;
+            padding: 0.7rem;
             border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
         }
 
         .form-group input:focus {
@@ -74,29 +75,31 @@
 
         .login-btn {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             background: linear-gradient(90deg, var(--primary), #8b1428);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 1rem;
         }
 
         .error-msg {
             color: #cc0000;
             text-align: center;
             margin-bottom: 1rem;
-            padding: 0.8rem;
+            padding: 0.7rem;
             background: #ffe6e6;
             border-radius: 6px;
             display: none;
+            font-size: 0.85rem;
         }
 
         .admin-container {
             display: none;
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 1rem;
         }
 
         .admin-container.active {
@@ -106,41 +109,52 @@
         .admin-header {
             background: linear-gradient(90deg, var(--primary), #8b1428);
             color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-header h1 {
+            font-size: 1.3rem;
         }
 
         .logout-btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             background: white;
             color: var(--primary);
             border: none;
             border-radius: 20px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .tab-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 0.8rem;
-            margin-bottom: 2rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
         }
 
         .tab-btn {
-            padding: 0.8rem;
+            padding: 0.7rem;
             background: white;
             border: 2px solid #ddd;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .tab-btn.active {
@@ -152,19 +166,26 @@
         .tab-content {
             display: none;
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .tab-content.active {
             display: block;
         }
 
+        .tab-content h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+        }
+
         .edit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .edit-field {
@@ -174,15 +195,16 @@
 
         .edit-field label {
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
         }
 
         .edit-field input,
         .edit-field textarea {
-            padding: 0.8rem;
+            padding: 0.6rem;
             border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
             font-family: inherit;
         }
 
@@ -194,17 +216,18 @@
 
         .button-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
         .save-btn, .reset-btn, .add-btn, .today-btn {
-            padding: 0.9rem;
+            padding: 0.7rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 0.8rem;
         }
 
         .save-btn {
@@ -230,82 +253,82 @@
 
         .table-section {
             overflow-x: auto;
-            margin-top: 2rem;
+            margin-top: 1.2rem;
         }
 
         .table-section table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .table-section th {
             background: var(--primary);
             color: white;
-            padding: 0.8rem;
+            padding: 0.6rem;
             text-align: left;
             font-weight: 700;
         }
 
         .table-section td {
-            padding: 0.6rem;
+            padding: 0.5rem;
             border: 1px solid #ddd;
         }
 
         .inline-edit {
             padding: 0.4rem;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 3px;
             width: 100%;
             font-family: inherit;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+        }
+
+        .delete-btn, .edit-btn {
+            padding: 0.3rem 0.6rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.75rem;
         }
 
         .delete-btn {
-            padding: 0.4rem 0.8rem;
             background: #e74c3c;
             color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
+        }
+
+        .edit-btn {
+            background: #3498db;
+            color: white;
         }
 
         .success-msg {
             background: #d4edda;
             color: #155724;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 6px;
             margin-bottom: 1rem;
             display: none;
-        }
-
-        .edit-btn {
-            padding: 0.4rem 0.8rem;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
-            .edit-grid {
-                grid-template-columns: 1fr;
-            }
-            .tab-buttons {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .admin-header {
                 flex-direction: column;
                 text-align: center;
             }
-            .admin-header h1 {
-                width: 100%;
-                margin-bottom: 1rem;
+
+            .edit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .table-section {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -327,20 +350,17 @@
                 </div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
-            <p style="margin-top: 2rem; font-size: 0.9rem; text-align: center;">
-                📝 Demo: admin@luckysatta.com / admin123
-            </p>
         </div>
     </div>
 
     <!-- Admin Dashboard -->
     <div class="admin-container" id="adminContainer">
         <div class="admin-header">
-            <h1>⚙️ Lucky Satta Admin</h1>
+            <h1>⚙️ Admin Panel</h1>
             <button class="logout-btn" onclick="handleLogout()">Logout</button>
         </div>
 
-        <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="main-content">
             <div class="success-msg" id="successMsg"></div>
 
             <div class="tab-buttons">
@@ -357,15 +377,15 @@
                 <h2>📱 Logo & Website Title</h2>
                 <div class="edit-grid">
                     <div class="edit-field">
-                        <label>💰 Logo Text</label>
+                        <label>Logo Text</label>
                         <input type="text" id="logoText" placeholder="💰 Lucky Satta">
                     </div>
                     <div class="edit-field">
-                        <label>🎯 Main Title</label>
+                        <label>Main Title</label>
                         <input type="text" id="heroTitle" placeholder="Lucky Satta King Results">
                     </div>
                     <div class="edit-field">
-                        <label>📝 Subtitle</label>
+                        <label>Subtitle</label>
                         <textarea id="heroSubtitle" placeholder="Daily Superfast Results..."></textarea>
                     </div>
                 </div>
@@ -380,19 +400,19 @@
                 <h2>📊 Today's Results</h2>
                 <div class="edit-grid">
                     <div class="edit-field">
-                        <label>📅 Date</label>
+                        <label>Date</label>
                         <input type="date" id="resultDate">
                     </div>
-                    <div class="edit-field" style="padding-top: 2rem;">
-                        <button class="today-btn" onclick="setTodayDate()">📆 Set Today's Date</button>
+                    <div class="edit-field" style="padding-top: 1.8rem;">
+                        <button class="today-btn" onclick="setTodayDate()">📆 Today</button>
                     </div>
                 </div>
                 <div class="table-section">
                     <table>
                         <thead>
                             <tr>
-                                <th>Game</th>
-                                <th>Number</th>
+                                <th>Game Name</th>
+                                <th>Result Number</th>
                             </tr>
                         </thead>
                         <tbody id="resultsTable"></tbody>
@@ -427,13 +447,14 @@
 
             <!-- Tab 4: Chart -->
             <div class="tab-content" id="chart">
-                <h2>📈 Chart Data - Edit</h2>
+                <h2>📈 Chart Data</h2>
                 <div class="edit-grid">
                     <div class="edit-field">
-                        <label>📅 Chart Month & Year</label>
-                        <input type="text" id="chartDate" placeholder="e.g., March 2026">
+                        <label>Month & Year</label>
+                        <input type="text" id="chartDate" placeholder="March 2026">
                     </div>
                 </div>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem;">Enter game numbers for each day (1-31)</p>
                 <div class="table-section">
                     <table id="chartEditTable"></table>
                 </div>
@@ -445,14 +466,14 @@
 
             <!-- Tab 5: Khaiwal -->
             <div class="tab-content" id="khaiwal">
-                <h2>👑 Authorized Khaiwal - Detailed</h2>
+                <h2>👑 Authorized Khaiwal</h2>
                 <div class="table-section">
                     <table>
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Phone</th>
-                                <th>WhatsApp</th>
+                                <th>WhatsApp Link</th>
                                 <th>Games</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -461,7 +482,7 @@
                         <tbody id="khaiwalTable"></tbody>
                     </table>
                 </div>
-                <button class="add-btn" onclick="addNewKhaiwal()">➕ Add New Khaiwal</button>
+                <button class="add-btn" onclick="addNewKhaiwal()">➕ Add New</button>
                 <div class="button-group">
                     <button class="save-btn" onclick="saveKhaiwal()">💾 Save</button>
                     <button class="reset-btn" onclick="loadKhaiwal()">Reset</button>
@@ -471,22 +492,22 @@
             <!-- Tab 6: Contact -->
             <div class="tab-content" id="contact">
                 <h2>📞 Contact Links</h2>
-                <div class="edit-grid">
-                    <div class="edit-field" style="grid-column: 1 / -1;">
-                        <label>💬 WhatsApp Link</label>
-                        <input type="text" id="contact_whatsapp" placeholder="https://whatsapp.com/channel/...">
+                <div class="edit-grid" style="grid-template-columns: 1fr;">
+                    <div class="edit-field">
+                        <label>WhatsApp Link</label>
+                        <input type="text" id="contact_whatsapp" placeholder="https://whatsapp.com/...">
                     </div>
-                    <div class="edit-field" style="grid-column: 1 / -1;">
-                        <label>✈️ Telegram Link</label>
+                    <div class="edit-field">
+                        <label>Telegram Link</label>
                         <input type="text" id="contact_telegram" placeholder="https://t.me/...">
                     </div>
-                    <div class="edit-field" style="grid-column: 1 / -1;">
-                        <label>👤 Admin WhatsApp</label>
+                    <div class="edit-field">
+                        <label>Admin WhatsApp</label>
                         <input type="text" id="contact_admin" placeholder="https://wa.me/+91...">
                     </div>
-                    <div class="edit-field" style="grid-column: 1 / -1;">
-                        <label>⚖️ Disclaimer</label>
-                        <textarea id="contact_disclaimer"></textarea>
+                    <div class="edit-field">
+                        <label>Disclaimer</label>
+                        <textarea id="contact_disclaimer" placeholder="Legal disclaimer"></textarea>
                     </div>
                 </div>
                 <div class="button-group">
@@ -580,18 +601,12 @@
             document.getElementById('resultDate').value = `${year}-${month}-${day}`;
         }
 
-        function formatDateForDisplay(dateStr) {
-            if (!dateStr) return '';
-            const date = new Date(dateStr + 'T00:00:00');
-            return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-        }
-
         // Branding
         function loadBranding() {
             const data = JSON.parse(localStorage.getItem('luckySattaBranding') || '{}');
             document.getElementById('logoText').value = data.logoText || '💰 Lucky Satta';
             document.getElementById('heroTitle').value = data.heroTitle || 'Lucky Satta King Results';
-            document.getElementById('heroSubtitle').value = data.heroSubtitle || 'Daily Superfast Results - Gali, Desawar, Delhi & More';
+            document.getElementById('heroSubtitle').value = data.heroSubtitle || 'Daily Superfast Results';
         }
 
         function saveBranding() {
@@ -636,7 +651,7 @@
                 <tr>
                     <td><input type="text" class="inline-edit" data-index="${index}" data-field="name" value="${g.name}"></td>
                     <td><input type="text" class="inline-edit" data-index="${index}" data-field="time" value="${g.time}"></td>
-                    <td><button class="edit-btn" onclick="alert('✏️ Edit directly in the fields above')">Edit</button></td>
+                    <td><span style="font-size:0.7rem;">Edit above</span></td>
                 </tr>
             `).join('');
         }
@@ -659,16 +674,16 @@
             const data = JSON.parse(localStorage.getItem('luckySattaChartData') || '{}');
             document.getElementById('chartDate').value = data.date || 'March 2026';
             
-            let html = `<thead><tr><th>Game Name</th>`;
+            let html = `<thead><tr><th>Game</th>`;
             for (let i = 1; i <= 31; i++) html += `<th>${i}</th>`;
             html += `</tr></thead><tbody>`;
 
             GAMES.forEach(game => {
-                html += `<tr><td style="font-weight: 700; padding-left: 1rem;">${game.name}</td>`;
+                html += `<tr><td style="font-weight: 700; min-width: 100px;">${game.name}</td>`;
                 for (let day = 1; day <= 31; day++) {
                     const key = `${game.name}_${day}`;
                     const value = data[key] || '';
-                    html += `<td><input type="text" class="inline-edit" data-key="${key}" value="${value}" maxlength="3" style="text-align: center;"></td>`;
+                    html += `<td><input type="text" class="inline-edit" data-key="${key}" value="${value}" maxlength="3" style="text-align: center; padding: 2px;"></td>`;
                 }
                 html += `</tr>`;
             });

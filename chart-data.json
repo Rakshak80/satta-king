@@ -1,0 +1,10 @@
+{
+  "date": "March 2026",
+  "description": "Chart data is now stored in localStorage via the admin panel. Changes made in admin panel are automatically reflected on the main website.",
+  "structure": {
+    "Disawar_1": "number",
+    "Disawar_2": "number",
+    "Sadar Bazar_1": "number"
+  },
+  "note": "This file is for reference. Actual data is stored in browser localStorage."
+}
